@@ -1,0 +1,51 @@
+<p>task-list works!</p>
+<h2>Tasks</h2>
+
+<p>
+  Pending: {{ pendingCount }}
+  |
+  Done: {{ doneCount }}
+</p>
+
+<div class="filters">
+  <label>Status:</label>
+  <select [(ngModel)]="filterStatus" (change)="applyFilters()" name="status">
+    <option value="all">All</option>
+    <option value="pending">Pending</option>
+    <option value="done">Done</option>
+  </select>
+
+  <label>Priority:</label>
+  <select [(ngModel)]="filterPriority" (change)="applyFilters()" name="priority">
+    <option value="">All</option>
+    <option value="Low">Low</option>
+    <option value="Medium">Medium</option>
+    <option value="High">High</option>
+  </select>
+</div>
+
+<div *ngFor="let task of tasks" class="task-item">
+
+  <h3>{{ task.title }}</h3>
+
+  <p>{{ task.description }}</p>
+
+  <p>Priority: {{ task.priority }}</p>
+
+  <p>Due Date: {{ task.due_date }}</p>
+
+  <p>Status:
+    {{ task.is_done ? 'Done' : 'Pending' }}
+  </p>
+
+  <button (click)="toggleDone(task)">
+    {{ task.is_done ? 'Mark Pending' : 'Mark Done' }}
+  </button>
+
+  <button (click)="deleteTask(task.id!)">
+    Delete
+  </button>
+
+  <hr>
+
+</div>

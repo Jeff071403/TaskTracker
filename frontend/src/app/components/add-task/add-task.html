@@ -1,0 +1,51 @@
+<p>add-task works!</p>
+<h2>Add Task</h2>
+
+<form (ngSubmit)="createTask()">
+
+  <label>Title</label>
+  <input
+    type="text"
+    [(ngModel)]="task.title"
+    name="title"
+    required
+  />
+
+  <br><br>
+
+  <label>Description</label>
+  <textarea
+    [(ngModel)]="task.description"
+    name="description">
+  </textarea>
+
+  <br><br>
+
+  <label>Due Date</label>
+  <input
+    type="date"
+    [(ngModel)]="task.due_date"
+    name="due_date"
+  />
+
+  <br><br>
+
+  <label>Priority</label>
+
+  <select
+    [(ngModel)]="task.priority"
+    name="priority">
+
+    <option value="Low">Low</option>
+    <option value="Medium">Medium</option>
+    <option value="High">High</option>
+
+  </select>
+
+  <br><br>
+
+  <button type="submit">
+    Create Task
+  </button>
+
+</form>

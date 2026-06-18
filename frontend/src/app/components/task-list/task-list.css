@@ -1,0 +1,22 @@
+:host {
+	display: block;
+	padding: 12px;
+}
+
+.filters {
+	display: flex;
+	gap: 12px;
+	align-items: center;
+	margin-bottom: 12px;
+}
+
+.task-item {
+	padding: 8px;
+	border: 1px solid #ddd;
+	border-radius: 4px;
+	margin-bottom: 8px;
+}
+
+.task-item h3 {
+	margin: 0 0 6px 0;
+}
