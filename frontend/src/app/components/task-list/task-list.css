@@ -55,3 +55,122 @@
 .task-item h3 {
 	margin: 0 0 6px 0;
 }
+
+.task-list {
+	display: grid;
+	gap: 16px;
+}
+
+.task-item {
+	padding: 18px;
+	border: 1px solid #e2e8f0;
+	border-radius: 14px;
+	background: white;
+	box-shadow: 0 8px 16px rgba(15, 23, 42, 0.05);
+}
+
+.task-item-header {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	margin-bottom: 12px;
+}
+
+.task-priority {
+	padding: 4px 12px;
+	border-radius: 999px;
+	font-size: 12px;
+	font-weight: 600;
+	background: #e0f2fe;
+	color: #0f172a;
+}
+
+.task-desc {
+	margin: 0 0 12px 0;
+	color: #475569;
+}
+
+.task-meta {
+	display: flex;
+	justify-content: space-between;
+	gap: 16px;
+	font-size: 14px;
+	color: #475569;
+	margin-bottom: 16px;
+}
+
+.task-actions {
+	display: flex;
+	gap: 12px;
+}
+
+.task-actions button {
+	border: none;
+	border-radius: 10px;
+	padding: 10px 14px;
+	cursor: pointer;
+	font-weight: 600;
+}
+
+.task-actions .toggle {
+	background: #2563eb;
+	color: white;
+}
+
+.task-actions .delete {
+	background: #ef4444;
+	color: white;
+}
+
+.modal-backdrop {
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	background: rgba(15, 23, 42, 0.35);
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	padding: 20px;
+	z-index: 1000;
+}
+
+.modal {
+	background: white;
+	padding: 24px;
+	border-radius: 16px;
+	max-width: 420px;
+	width: 100%;
+	box-shadow: 0 20px 40px rgba(15, 23, 42, 0.15);
+}
+
+.modal h3 {
+	margin-top: 0;
+}
+
+.modal-actions {
+	display: flex;
+	justify-content: flex-end;
+	gap: 12px;
+	margin-top: 18px;
+}
+
+.modal-actions button {
+	min-width: 100px;
+	padding: 10px 14px;
+	border-radius: 10px;
+	border: none;
+	cursor: pointer;
+	font-weight: 700;
+}
+
+.modal-actions .confirm {
+	background: #ef4444;
+	color: white;
+}
+
+.modal-actions .cancel {
+	background: #e2e8f0;
+	color: #0f172a;
+}

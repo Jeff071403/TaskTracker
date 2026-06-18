@@ -25,28 +25,38 @@
   </div>
 </div>
 
-<div *ngFor="let task of tasks" class="task-item">
+<div class="task-list">
+  <div *ngFor="let task of tasks" class="task-item">
+    <div class="task-item-header">
+      <h3>{{ task.title }}</h3>
+      <span class="task-priority">{{ task.priority }}</span>
+    </div>
 
-  <h3>{{ task.title }}</h3>
+    <p class="task-desc" *ngIf="task.description">{{ task.description }}</p>
 
-  <p>{{ task.description }}</p>
+    <div class="task-meta">
+      <span>Due: {{ task.due_date || 'No due date' }}</span>
+      <span>Status: <strong>{{ task.is_done ? 'Done' : 'Pending' }}</strong></span>
+    </div>
 
-  <p>Priority: {{ task.priority }}</p>
+    <div class="task-actions">
+      <button class="toggle" (click)="toggleDone(task)">
+        {{ task.is_done ? 'Mark Pending' : 'Mark Done' }}
+      </button>
+      <button class="delete" (click)="openDeleteDialog(task.id!, task.title)">
+        Delete
+      </button>
+    </div>
+  </div>
+</div>
 
-  <p>Due Date: {{ task.due_date }}</p>
-
-  <p>Status:
-    {{ task.is_done ? 'Done' : 'Pending' }}
-  </p>
-
-  <button (click)="toggleDone(task)">
-    {{ task.is_done ? 'Mark Pending' : 'Mark Done' }}
-  </button>
-
-  <button (click)="deleteTask(task.id!)">
-    Delete
-  </button>
-
-  <hr>
-
+<div class="modal-backdrop" *ngIf="deleteDialogVisible">
+  <div class="modal">
+    <h3>Confirm Delete</h3>
+    <p>Are you sure you want to delete "{{ deleteTargetTitle }}"?</p>
+    <div class="modal-actions">
+      <button class="confirm" (click)="confirmDeleteTask()">Yes, delete</button>
+      <button class="cancel" (click)="cancelDelete()">Cancel</button>
+    </div>
+  </div>
 </div>

@@ -1,0 +1,43 @@
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background: #f3f6fb;
+  color: #333;
+}
+
+:root {
+  --surface: #ffffff;
+  --surface-strong: #f8fbff;
+  --border: #d9e2ef;
+  --primary: #2563eb;
+  --danger: #dc2626;
+  --text: #0f172a;
+}
+
+app-root {
+  display: block;
+  padding: 24px;
+}
+
+.container {
+  max-width: 960px;
+  margin: 0 auto;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  box-shadow: 0 16px 32px rgba(15, 23, 42, 0.08);
+  padding: 24px;
+}
+
+h1 {
+  margin-top: 0;
+  margin-bottom: 18px;
+  font-size: 32px;
+  color: var(--text);
+}
+
+hr {
+  border: none;
+  border-top: 1px solid var(--border);
+  margin: 24px 0;
+}

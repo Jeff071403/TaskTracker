@@ -1,51 +1,56 @@
 <p>add-task works!</p>
 <h2>Add Task</h2>
 
-<form (ngSubmit)="createTask()" #taskForm="ngForm">
+<div *ngIf="errorMessage" style="color: red; padding: 10px; background: #ffe0e0; margin-bottom: 10px; border-radius: 4px;">
+  {{ errorMessage }}
+</div>
 
-  <label>Title <span style="color: red">*</span></label>
-  <input
-    type="text"
-    [(ngModel)]="task.title"
-    name="title"
-    required
-  />
+<div *ngIf="successMessage" style="color: green; padding: 10px; background: #e0ffe0; margin-bottom: 10px; border-radius: 4px;">
+  {{ successMessage }}
+</div>
 
-  <br><br>
+<form class="add-task-form" (ngSubmit)="createTask()" #taskForm="ngForm">
+  <div class="form-row">
+    <label>Title <span class="required-star">*</span></label>
+    <input
+      type="text"
+      [(ngModel)]="task.title"
+      name="title"
+      required
+    />
+  </div>
 
-  <label>Description</label>
-  <textarea
-    [(ngModel)]="task.description"
-    name="description">
-  </textarea>
+  <div class="form-row">
+    <label>Description</label>
+    <textarea
+      [(ngModel)]="task.description"
+      name="description">
+    </textarea>
+  </div>
 
-  <br><br>
+  <div class="form-row">
+    <label>Due Date</label>
+    <input
+      type="date"
+      [(ngModel)]="task.due_date"
+      name="due_date"
+    />
+  </div>
 
-  <label>Due Date</label>
-  <input
-    type="date"
-    [(ngModel)]="task.due_date"
-    name="due_date"
-  />
+  <div class="form-row">
+    <label>Priority</label>
+    <select
+      [(ngModel)]="task.priority"
+      name="priority">
+      <option value="Low">Low</option>
+      <option value="Medium">Medium</option>
+      <option value="High">High</option>
+    </select>
+  </div>
 
-  <br><br>
-
-  <label>Priority</label>
-
-  <select
-    [(ngModel)]="task.priority"
-    name="priority">
-
-    <option value="Low">Low</option>
-    <option value="Medium">Medium</option>
-    <option value="High">High</option>
-
-  </select>
-
-  <br><br>
-
-  <button type="submit">
-    Create Task
-  </button>
-
+  <div class="form-actions">
+    <button type="submit">
+      Create Task
+    </button>
+  </div>
 </form>

@@ -1,11 +1,12 @@
 import { Component } from '@angular/core';
+import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { TaskService, Task } from '../../services/task';
 
 @Component({
   standalone: true,
   selector: 'app-add-task',
-  imports: [FormsModule],
+  imports: [CommonModule, FormsModule],
   templateUrl: './add-task.html',
   styleUrls: ['./add-task.css'],
 })
@@ -19,12 +20,18 @@ export class AddTask {
     is_done: false
   };
 
+  errorMessage: string = '';
+  successMessage: string = '';
+
   constructor(private taskService: TaskService) {}
 
   createTask() {
+    this.errorMessage = '';
+    this.successMessage = '';
+
     this.taskService.createTask(this.task).subscribe({
       next: () => {
-        alert('Task Created');
+        this.successMessage = 'Task created successfully!';
 
         // notify other components to refresh
         this.taskService.notifyChange();
@@ -36,9 +43,14 @@ export class AddTask {
           priority: 'Medium',
           is_done: false
         };
+
+        setTimeout(() => {
+          this.successMessage = '';
+        }, 3000);
       },
       error: (err: any) => {
-        console.error(err);
+        this.errorMessage = err.error?.error || 'Failed to create task. Check console for details.';
+        console.error('Create task error:', err);
       }
     });
   }

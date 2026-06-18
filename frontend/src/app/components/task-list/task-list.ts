@@ -16,6 +16,9 @@ export class TaskList implements OnInit {
   filterStatus: string = 'all';
   filterPriority: string = '';
   showDropdowns: boolean = true;
+  deleteDialogVisible = false;
+  deleteTargetId: number | null = null;
+  deleteTargetTitle = '';
 
   private tasksSub: any;
 
@@ -42,15 +45,27 @@ export class TaskList implements OnInit {
     });
   }
 
-  deleteTask(id: number) {
+  openDeleteDialog(id: number, title: string) {
+    this.deleteDialogVisible = true;
+    this.deleteTargetId = id;
+    this.deleteTargetTitle = title;
+  }
 
-    if (!confirm('Delete this task?')) {
+  confirmDeleteTask() {
+    if (this.deleteTargetId == null) {
       return;
     }
 
-    this.taskService.deleteTask(id).subscribe(() => {
+    this.taskService.deleteTask(this.deleteTargetId).subscribe(() => {
       this.taskService.notifyChange();
+      this.cancelDelete();
     });
+  }
+
+  cancelDelete() {
+    this.deleteDialogVisible = false;
+    this.deleteTargetId = null;
+    this.deleteTargetTitle = '';
   }
 
   toggleDone(task: Task) {

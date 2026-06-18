@@ -11,7 +11,6 @@ class Task(db.Model):
     due_date = db.Column(db.Date, index=True)
     priority = db.Column(db.String(10), nullable=False, index=True)
     is_done = db.Column(db.Boolean, nullable=False, default=False, index=True)
-    created_at = db.Column(db.DateTime, nullable=False, server_default=db.func.now())
     __table_args__ = (
         db.CheckConstraint("priority IN ('Low', 'Medium', 'High')", name='priority_check'),
     )
