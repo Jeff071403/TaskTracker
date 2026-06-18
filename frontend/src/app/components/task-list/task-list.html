@@ -1,27 +1,28 @@
-<p>task-list works!</p>
 <h2>Tasks</h2>
 
-<p>
-  Pending: {{ pendingCount }}
-  |
-  Done: {{ doneCount }}
-</p>
+<div class="counter">
+  <p><strong>{{ pendingCount }} pending, {{ doneCount }} done</strong></p>
+</div>
 
-<div class="filters">
-  <label>Status:</label>
-  <select [(ngModel)]="filterStatus" (change)="applyFilters()" name="status">
-    <option value="all">All</option>
-    <option value="pending">Pending</option>
-    <option value="done">Done</option>
-  </select>
+<div class="filters" *ngIf="showDropdowns">
+  <div class="filter-group">
+    <label>Status:</label>
+    <select [(ngModel)]="filterStatus" (change)="applyFilters()" name="status">
+      <option value="all">All</option>
+      <option value="pending">Pending</option>
+      <option value="done">Done</option>
+    </select>
+  </div>
 
-  <label>Priority:</label>
-  <select [(ngModel)]="filterPriority" (change)="applyFilters()" name="priority">
-    <option value="">All</option>
-    <option value="Low">Low</option>
-    <option value="Medium">Medium</option>
-    <option value="High">High</option>
-  </select>
+  <div class="filter-group">
+    <label>Priority:</label>
+    <select [(ngModel)]="filterPriority" (change)="applyFilters()" name="priority">
+      <option value="">All</option>
+      <option value="Low">Low</option>
+      <option value="Medium">Medium</option>
+      <option value="High">High</option>
+    </select>
+  </div>
 </div>
 
 <div *ngFor="let task of tasks" class="task-item">

@@ -4,6 +4,7 @@ import { FormsModule } from '@angular/forms';
 import { TaskService, Task } from '../../services/task';
 
 @Component({
+  standalone: true,
   selector: 'app-task-list',
   imports: [CommonModule, FormsModule],
   templateUrl: './task-list.html',
@@ -14,6 +15,7 @@ export class TaskList implements OnInit {
   tasks: Task[] = [];
   filterStatus: string = 'all';
   filterPriority: string = '';
+  showDropdowns: boolean = true;
 
   private tasksSub: any;
 
@@ -32,9 +34,10 @@ export class TaskList implements OnInit {
           if (!b.due_date) return -1;
           return new Date(a.due_date).getTime() - new Date(b.due_date).getTime();
         });
+        console.log(`Loaded ${this.tasks.length} tasks - Pending: ${this.pendingCount}, Done: ${this.doneCount}`);
       },
       error: (err: any) => {
-        console.error(err);
+        console.error('Error loading tasks:', err);
       }
     });
   }

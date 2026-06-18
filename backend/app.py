@@ -57,6 +57,9 @@ def create_task():
 
     data = request.json
 
+    if not data or not data.get("title"):
+        return jsonify({"error": "Title is required."}), 400
+
     task = Task(
         title=data["title"],
         description=data.get("description"),
@@ -64,7 +67,7 @@ def create_task():
             data["due_date"],
             "%Y-%m-%d"
         ).date() if data.get("due_date") else None,
-        priority=data["priority"]
+        priority=data.get("priority", "Medium")
     )
 
     db.session.add(task)
@@ -79,10 +82,12 @@ def update_task(id):
 
     data = request.json
 
+    if not data or not data.get("title"):
+        return jsonify({"error": "Title is required."}), 400
+
     task.title = data["title"]
     task.description = data.get("description")
-
-    task.priority = data["priority"]
+    task.priority = data.get("priority", "Medium")
     task.is_done = data["is_done"]
 
     if data.get("due_date"):

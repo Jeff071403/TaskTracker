@@ -1,9 +1,9 @@
 <p>add-task works!</p>
 <h2>Add Task</h2>
 
-<form (ngSubmit)="createTask()">
+<form (ngSubmit)="createTask()" #taskForm="ngForm">
 
-  <label>Title</label>
+  <label>Title <span style="color: red">*</span></label>
   <input
     type="text"
     [(ngModel)]="task.title"

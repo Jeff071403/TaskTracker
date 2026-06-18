@@ -3,6 +3,7 @@ import { FormsModule } from '@angular/forms';
 import { TaskService, Task } from '../../services/task';
 
 @Component({
+  standalone: true,
   selector: 'app-add-task',
   imports: [FormsModule],
   templateUrl: './add-task.html',

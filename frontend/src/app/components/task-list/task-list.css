@@ -3,11 +3,46 @@
 	padding: 12px;
 }
 
+.counter {
+	background: #f0f0f0;
+	padding: 12px;
+	border-radius: 4px;
+	margin-bottom: 16px;
+	border-left: 4px solid #007bff;
+}
+
+.counter p {
+	margin: 0;
+	font-size: 16px;
+}
+
 .filters {
 	display: flex;
-	gap: 12px;
+	flex-wrap: wrap;
+	gap: 16px;
 	align-items: center;
-	margin-bottom: 12px;
+	margin-bottom: 20px;
+	padding: 12px;
+	background: #fafafa;
+	border-radius: 4px;
+}
+
+.filter-group {
+	display: flex;
+	align-items: center;
+	gap: 8px;
+}
+
+.filter-group label {
+	font-weight: 500;
+	color: #333;
+}
+
+.filter-group select {
+	padding: 6px 10px;
+	border: 1px solid #ddd;
+	border-radius: 4px;
+	font-size: 14px;
 }
 
 .task-item {
